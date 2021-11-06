@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -93,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6D8338E2736C5A600E19FA3 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				FF4281012736BF0700C22075 /* ViewController.swift */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 		E2D41ABE597FE02ED2E69D0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +121,6 @@
 				F4F62169F2541D3E2B62B673 /* Pods-ProjectTests.debug.xcconfig */,
 				2A22A414691F764FCC876B2D /* Pods-ProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,9 +149,9 @@
 		FF4280FC2736BF0700C22075 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				D6D8338E2736C5A600E19FA3 /* main */,
 				FF4280FD2736BF0700C22075 /* AppDelegate.swift */,
 				FF4280FF2736BF0700C22075 /* SceneDelegate.swift */,
-				FF4281012736BF0700C22075 /* ViewController.swift */,
 				FF4281032736BF0700C22075 /* Main.storyboard */,
 				FF4281092736BF0800C22075 /* Assets.xcassets */,
 				FF42810B2736BF0800C22075 /* LaunchScreen.storyboard */,
