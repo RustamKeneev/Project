@@ -10,11 +10,21 @@ import SnapKit
 
 class ViewController: UIViewController {
 
+    private lazy var viewModel: ViewModel = {
+        return ViewModel(delegate: self)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
 
 }
 
+extension ViewController: ViewDelegate {
+    func showResult(result: String) {
+        print(result)
+    }
+}
