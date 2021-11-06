@@ -95,6 +95,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6D8338E2736C5A600E19FA3 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				FF4281012736BF0700C22075 /* ViewController.swift */,
+			);
+			path = main;
 		CE50FC272736C54E00CEA2AE /* viewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +158,7 @@
 		FF4280FC2736BF0700C22075 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				D6D8338E2736C5A600E19FA3 /* main */,
 				CE50FC272736C54E00CEA2AE /* viewController */,
 				FF4280FD2736BF0700C22075 /* AppDelegate.swift */,
 				FF4280FF2736BF0700C22075 /* SceneDelegate.swift */,
