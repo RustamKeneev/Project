@@ -10,25 +10,32 @@ import XCTest
 class ProjectUITests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+       
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testCalculatPeoject() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        app.textFields["Enter math func"].clearAndEnterText(text: "10 + 10")
+        app.buttons["Math"].tap()
+        app.textViews["20.0"]
+        
+        app.textFields["Enter math func"].clearAndEnterText(text: "20 + 10 - 5")
+        app.buttons["Math"].tap()
+        app.textViews["25.0"]
+        
+        app.textFields["Enter math func"].clearAndEnterText(text: "10.5 + 10.2")
+        app.buttons["Math"].tap()
+        app.textViews["20.7"]
+        
+        app.textFields["Enter math func"].clearAndEnterText(text: "0")
+        app.buttons["Math"].tap()
+        app.textViews["0.0"]
     }
 
     func testLaunchPerformance() throws {
@@ -38,5 +45,37 @@ class ProjectUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+}
+
+extension XCUIApplication {
+    func dismissKeyboardIfPresent() {
+        if keyboards.element(boundBy: 0).exists {
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                keyboards.buttons["Hide keyboard"].tap()
+            } else {
+                toolbars.buttons["Done"].tap()
+            }
+        }
+    }
+}
+
+extension XCUIElement {
+    /**
+     Removes any current text in the field before typing in the new value
+     - Parameter text: the text to enter into the field
+     */
+    func clearAndEnterText(text: String) {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear and enter text into a non string value")
+            return
+        }
+
+        self.tap()
+
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+
+        self.typeText(deleteString)
+        self.typeText(text)
     }
 }

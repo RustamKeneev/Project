@@ -10,19 +10,67 @@ import XCTest
 
 class ProjectTests: XCTestCase {
 
+    class ViewDelegator: ViewDelegate {
+        var result: String? = nil
+        
+        func showResult(result: String) {
+            self.result = result
+        }
+    }
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testCalculatorOne() throws {
+        let delegator = ViewDelegator()
+        let viewModel = ViewModel(delegate: delegator)
+        
+        viewModel.clickButton(titleButton: "10 + 10")
+        
+        XCTAssertTrue(delegator.result == "20.0", "Check clickButton")
     }
 
+    func testCalculatorTwo() throws {
+        let delegator = ViewDelegator()
+        let viewModel = ViewModel(delegate: delegator)
+        
+        viewModel.clickButton(titleButton: "+")
+        
+        XCTAssertTrue(delegator.result == nil, "Check clickButton")
+    }
+    
+    func testCalculatorThree() throws {
+        let delegator = ViewDelegator()
+        let viewModel = ViewModel(delegate: delegator)
+        
+        viewModel.clickButton(titleButton: "10 - 10")
+        
+        XCTAssertTrue(delegator.result == "0.0", "Check clickButton")
+    }
+    
+    func testCalculatorForn() throws {
+        let delegator = ViewDelegator()
+        let viewModel = ViewModel(delegate: delegator)
+        
+        viewModel.clickButton(titleButton: "10.0 + 10.0")
+        
+        XCTAssertTrue(delegator.result == "20.0", "Check clickButton")
+    }
+    
+    func testCalculatorFive() throws {
+        let delegator = ViewDelegator()
+        let viewModel = ViewModel(delegate: delegator)
+        
+        viewModel.clickButton(titleButton: "10 +")
+        
+        XCTAssertTrue(delegator.result == nil, "Check clickButton")
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

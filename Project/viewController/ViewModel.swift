@@ -30,6 +30,6 @@ class ViewModel {
             let mathExpression = NSExpression(format: math)
             
             delegate?.showResult(result: String(mathExpression.expressionValue(with: nil, context: nil) as! Double))
-        }
+        } 
     }
 }
